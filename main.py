@@ -1,8 +1,18 @@
 from typing import Set
+import os
 
 from backend.core import run_llm
 import streamlit as st
 from streamlit_chat import message
+
+st.write(
+    "Has environment variables been set:",
+    os.environ["PINECONE_API_KEY"] == st.secrets["PINECONE_API_KEY"],
+)
+st.write(
+    "Has environment variables been set:",
+    os.environ["PINECONE_ENVIRONMENT_REGION"] == st.secrets["PINECONE_ENVIRONMENT_REGION"],
+)
 
 
 def create_sources_string(source_urls: Set[str]) -> str:
