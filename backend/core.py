@@ -23,9 +23,9 @@ def run_llm(query: str, chat_history: List[Dict[str, Any]] = []):
         embedding=embeddings,
         index_name=INDEX_NAME,
     )
-    repo_id="google/flan-t5-xxl"
+    repo_id = "google/flan-t5-xxl"
     chat = HuggingFaceHub(
-    repo_id=repo_id, model_kwargs={"temperature": 0.5, "max_length": 64}
+    repo_id=repo_id, model_kwargs={"temperature": 0.1, "max_length": 200}
     )
 
     qa = ConversationalRetrievalChain.from_llm(
@@ -34,4 +34,4 @@ def run_llm(query: str, chat_history: List[Dict[str, Any]] = []):
     return qa({"question": query, "chat_history": chat_history})
 
 if __name__ == "__main__":
-    print(run_llm(query="What if I changed my name?"))
+    print(run_llm(query="What if I changed my name? Give me context"))

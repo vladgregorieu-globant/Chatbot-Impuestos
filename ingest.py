@@ -17,7 +17,7 @@ def ingest_docs()->None:
     raw_documents = loader.load()
     print(f"loaded {len(raw_documents)} documents")
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=400, chunk_overlap=50, separators=["\n\n", "\n", " ", "", "\xa0"]
+        chunk_size=1000, chunk_overlap=200, separators=["\n\n", "\n", " ", "", "\xa0"]
     )
     documents = text_splitter.split_documents(raw_documents)
     print(f"Splitted into {len(documents)} chunks")
