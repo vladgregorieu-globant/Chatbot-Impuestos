@@ -43,7 +43,7 @@ def run_llm(query: str, chat_history: List[Dict[str, Any]] = []):
     )
 
     qa = RetrievalQA.from_chain_type(
-        llm=chat, chain_type="stuff", retriever=docsearch.as_retriever(), return_source_documents=False, chain_type_kwargs={"prompt": prompt, "memory": memory},
+        llm=chat, chain_type="stuff", retriever=docsearch.as_retriever(), return_source_documents=True, chain_type_kwargs={"prompt": prompt, "memory": memory},
     )
     return qa(query)
 
