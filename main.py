@@ -47,6 +47,8 @@ if prompt:
             query=prompt, chat_history=st.session_state["chat_history"]
         )
 
+        print(generated_response)
+
         sources = set(
             [doc.metadata["source"] for doc in generated_response["source_documents"]]
         )
