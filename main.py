@@ -53,10 +53,10 @@ if prompt:
             [doc.metadata["source"] for doc in generated_response["source_documents"]]
         )
         formatted_response = (
-            f"{generated_response['answer']} \n\n {create_sources_string(sources)}"
+            f"{generated_response['result']} \n\n {create_sources_string(sources)}"
         )
 
-        st.session_state.chat_history.append((prompt, generated_response["answer"]))
+        st.session_state.chat_history.append((prompt, generated_response["result"]))
         st.session_state.user_prompt_history.append(prompt)
         st.session_state.chat_answers_history.append(formatted_response)
 
